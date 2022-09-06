@@ -43,6 +43,11 @@ next(err);
 
 });
 
+app.use((req, res, next) => {
+
+    return res.status(404).json({ message: "Not Found" });
+});
+
 //error handling
 app.use((err, req, res, next) => {
     console.log(err);
