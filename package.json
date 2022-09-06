@@ -1,0 +1,23 @@
+{
+  "name": "get-location",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "geoip-lite": "^1.4.6",
+    "mongoose": "^6.5.4",
+    "prompt-confirm": "^2.0.4",
+    "satelize": "^0.2.0",
+    "unirest": "^0.6.0"
+  }
+}
