@@ -22,7 +22,7 @@ const server = () => {
 connectToDb(process.env.MONGO_URI, server);
 const User = require('./users');
 
-app.post("/get-location", async (req, res) => {
+app.post("/get-location", async (req, res,next) => {
     console.log(req.body);
 
     let remoteAddress = req.connection.remoteAddress;
@@ -38,9 +38,14 @@ app.post("/get-location", async (req, res) => {
         console.log(newUser);
         res.send(user);
     } catch (err) {
-        console.log(err);
-
+next(err);
     }
 
 });
 
+//error handling
+app.use((err, req, res, next) => {
+    console.log(err);
+    res.status(500).send(err);
+}
+)
