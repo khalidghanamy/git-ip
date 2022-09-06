@@ -7,6 +7,8 @@ const geo = require("geoip-lite");
 const cors = require('cors');
 const connectToDb = require('./db');
 require('dotenv').config();
+const path = require('path');
+const {fileURLToPath} = require('url');
 
 app.use(cors());
 app.use(express.json());
@@ -42,3 +44,23 @@ app.post("/get-location", async (req, res) => {
     }
 
 });
+
+//====> Deployment <========================================
+
+const __filename = fileURLToPath(import.meta.url);
+
+let __dirname = path.dirname(__filename);
+// const dirname = __dirname.split("/")
+// console.log(dirname.pop());
+//  __dirname =dirname.join("/");
+
+console.log('directory-name 👉️', __dirname);
+
+if(process.env.NODE_ENV==="production"){
+    app.use(express.static(path.join(__dirname)));
+    app.get("*",(req,res)=>{
+        res.sendFile(path.join(__dirname,"/index.html"));
+        // console.log(path.resolve(__dirname,"client","build","index.html"));
+    } 
+    )
+}
