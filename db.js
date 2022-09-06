@@ -12,7 +12,7 @@ const connectToDb = async (url,server)=>{
     //== call server ==
     server();
 }catch(err){
-    throw new Error(err);
+console.log(err.message);
 }
 }
 
