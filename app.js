@@ -1,9 +1,6 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const unirest = require("unirest");
-const satelize = require("satelize");
-const geo = require("geoip-lite");
 const cors = require('cors');
 const connectToDb = require('./db');
 require('dotenv').config();
