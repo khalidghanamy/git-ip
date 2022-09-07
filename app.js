@@ -21,7 +21,9 @@ const server = () => {
 }
 connectToDb(process.env.MONGO_URI, server);
 const User = require('./users');
-
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
 app.post("/get-location", async (req, res,next) => {
     console.log(req.body);
 
